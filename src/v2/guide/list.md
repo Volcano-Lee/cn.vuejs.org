@@ -372,20 +372,25 @@ vm.userProfile = Object.assign({}, vm.userProfile, {
 例如：
 
 ``` html
-<li v-for="n in evenNumbers">{{ n }}</li>
+<div id="app">
+  <li v-for="n in evenNumbers">{{ n }}</li>
+</div>
 ```
 
 ``` js
-data: {
+new Vue({
+  el:"#app",
+  data: {
   numbers: [ 1, 2, 3, 4, 5 ]
-},
-computed: {
-  evenNumbers: function () {
-    return this.numbers.filter(function (number) {
-      return number % 2 === 0
-    })
+  },
+  computed: {
+    evenNumbers: function () {
+      return this.numbers.filter(function (number) {
+        return number % 2 === 0
+      })
+    }
   }
-}
+})
 ```
 
 在计算属性不适用的情况下 (例如，在嵌套 `v-for` 循环中) 你可以使用一个方法：
